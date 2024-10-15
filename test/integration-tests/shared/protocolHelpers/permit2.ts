@@ -91,6 +91,8 @@ export async function getPermitSignature(
   // look up the correct nonce for this permit
   const nextNonce = (await permit2.allowance(signer.address, permit.details.token, permit.spender)).nonce
   permit.details.nonce = nextNonce
+  console.log('permit', permit)
+  console.log('signer', signer.address)
   return await signPermit(permit, signer, permit2.address)
 }
 
